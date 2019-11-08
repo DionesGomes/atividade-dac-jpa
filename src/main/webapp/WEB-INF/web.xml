@@ -33,7 +33,7 @@
   </session-config>
 
   <data-source>
-    <name>java:global/DACDataSource</name>
+    <name>jdbc/DACDataSource</name>
     <class-name>org.postgresql.ds.PGSimpleDataSource</class-name>
     <server-name>${ENV=DB_HOST}</server-name>
     <port-number>5433</port-number>
