@@ -1,4 +1,4 @@
-dokcer stop app             #Parando o container com o nome 'app'
+docker stop app             #Parando o container com o nome 'app'
 docker rm app               #Removendo o container com o nome 'app'
 docker rmi -f dac-jpa/app   #Removendo a imagem
 
