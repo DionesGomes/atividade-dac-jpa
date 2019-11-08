@@ -11,9 +11,11 @@
   <name>dac-jpa</name>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <dockerfile-maven-version>1.4.13</dockerfile-maven-version>
+    <maven.deploy.skip>true</maven.deploy.skip>
+    <payara.version>5.181</payara.version>
   </properties>
 
   <dependencyManagement>
@@ -32,19 +34,14 @@
   <dependencies>
     <dependency>
       <groupId>javax</groupId>
-      <artifactId>javaee-web-api</artifactId>
-      <version>7.0</version>
+      <artifactId>javaee-api</artifactId>
+      <version>8.0</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
-      <version>9.4.1212.jre7</version>
-    </dependency>
-    <dependency>
-      <groupId>org.eclipse.persistence</groupId>
-      <artifactId>eclipselink</artifactId>
-      <version>2.5.2</version>
+      <version>42.2.8</version>
     </dependency>
 
     <!-- Bibliotecas para testes -->
@@ -72,6 +69,12 @@
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
 
