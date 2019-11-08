@@ -2,7 +2,7 @@ package br.edu.ifpb.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Objects;
+import java.util.List;
 
 @Entity
 @Table(name = "PARTICIPANTES")
@@ -20,11 +20,16 @@ public class Participante implements Serializable {
     private String tipoUsuario;
     private String profissao;
 
-    @OneToOne
-    private Contato contato; // Relacionamento 1 para 1.
-    @OneToOne
-    private Endereco endereco; //Relacionamento 1 para 1.
+    @OneToOne(cascade = CascadeType.ALL)
+    private Contato contato;                // Relacionamento 1 para 1 (Unidirecional).
+    @OneToOne(cascade = CascadeType.ALL)
+    private Endereco endereco;              //Relacionamento 1 para 1 (unidirecional).
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Artigo> artigo;            //Relacionamento 1 para N (unidirecional).
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Inscricao> inscricaos;     //Relacionamento 1 para N (unidirecional).
 
     public Participante() {
 
@@ -94,37 +99,36 @@ public class Participante implements Serializable {
         this.profissao = profissao;
     }
 
-    @Override
-    public String toString() {
-        return "Participante{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", email='" + email + '\'' +
-                ", nomeCracha='" + nomeCracha + '\'' +
-                ", instituicao='" + instituicao + '\'' +
-                ", CPF='" + CPF + '\'' +
-                ", tipoUsuario='" + tipoUsuario + '\'' +
-                ", profissao='" + profissao + '\'' +
-                '}';
+    public Contato getContato() {
+        return contato;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Participante that = (Participante) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(nome, that.nome) &&
-                Objects.equals(email, that.email) &&
-                Objects.equals(nomeCracha, that.nomeCracha) &&
-                Objects.equals(instituicao, that.instituicao) &&
-                Objects.equals(CPF, that.CPF) &&
-                Objects.equals(tipoUsuario, that.tipoUsuario) &&
-                Objects.equals(profissao, that.profissao);
+    public void setContato(Contato contato) {
+        this.contato = contato;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, nome, email, nomeCracha, instituicao, CPF, tipoUsuario, profissao);
+    public Endereco getEndereco() {
+        return endereco;
     }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public List<Artigo> getArtigo() {
+        return artigo;
+    }
+
+    public void setArtigo(List<Artigo> artigo) {
+        this.artigo = artigo;
+    }
+
+    public List<Inscricao> getInscricaos() {
+        return inscricaos;
+    }
+
+    public void setInscricaos(List<Inscricao> inscricaos) {
+        this.inscricaos = inscricaos;
+    }
+    
 }

@@ -1,6 +1,5 @@
 package br.edu.ifpb.domain;
 
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -44,15 +43,6 @@ public class Contato implements Serializable {
 
     public String getTelefoneCelular() {
         return telefoneCelular;
-    }
-
-    @Override
-    public String toString() {
-        return "Contato{" +
-                "telefoneResidencial='" + telefoneResidencial + '\'' +
-                ", telefoneComercial='" + telefoneComercial + '\'' +
-                ", telefoneCelular='" + telefoneCelular + '\'' +
-                '}';
     }
 
 }

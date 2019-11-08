@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "ENDERECOS")
-@SequenceGenerator(name = "END_SEQ", sequenceName = "ENDERECO_SEQ", initialValue = 1, allocationSize = 2)
+@SequenceGenerator(name = "END_SEQ", sequenceName = "ENDERECO_SEQ", initialValue = 1, allocationSize = 1)
 public class Endereco implements Serializable {
 
     private static final long serialVersionUID = -4023522856316087762L;
@@ -72,15 +72,4 @@ public class Endereco implements Serializable {
         this.cep = cep;
     }
 
-    @Override
-    public String toString() {
-        return "Endereco{" +
-                "logradouro='" + logradouro + '\'' +
-                ", numero='" + numero + '\'' +
-                ", bairro='" + bairro + '\'' +
-                ", cidade='" + cidade + '\'' +
-                ", estado='" + estado + '\'' +
-                ", cep='" + cep + '\'' +
-                '}';
-    }
 }

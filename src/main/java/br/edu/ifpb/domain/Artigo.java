@@ -2,16 +2,14 @@ package br.edu.ifpb.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Objects;
 
 @Entity
 @Table(name = "ARTIGOS")
 public class Artigo implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Integer id;
     @Column(length = 200, nullable = false)
     private String titulo;
@@ -21,9 +19,6 @@ public class Artigo implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dataSubmissao;
     private String urlDownload;
-
-    @ManyToOne
-    private Participante participante; //Relacionamento N para 1.
 
     public Artigo() {
 
@@ -85,35 +80,4 @@ public class Artigo implements Serializable {
         this.urlDownload = urlDownload;
     }
 
-    @Override
-    public String toString() {
-        return "Artigo{" +
-                "id=" + id +
-                ", titulo='" + titulo + '\'' +
-                ", orientador='" + orientador + '\'' +
-                ", coautores='" + coautores + '\'' +
-                ", modalidade='" + modalidade + '\'' +
-                ", dataSubmissao=" + dataSubmissao +
-                ", urlDownload='" + urlDownload + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Artigo artigo = (Artigo) o;
-        return Objects.equals(id, artigo.id) &&
-                Objects.equals(titulo, artigo.titulo) &&
-                Objects.equals(orientador, artigo.orientador) &&
-                Objects.equals(coautores, artigo.coautores) &&
-                Objects.equals(modalidade, artigo.modalidade) &&
-                Objects.equals(dataSubmissao, artigo.dataSubmissao) &&
-                Objects.equals(urlDownload, artigo.urlDownload);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, titulo, orientador, coautores, modalidade, dataSubmissao, urlDownload);
-    }
 }

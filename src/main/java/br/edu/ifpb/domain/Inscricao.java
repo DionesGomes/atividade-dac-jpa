@@ -2,9 +2,7 @@ package br.edu.ifpb.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Objects;
 
 @Entity
 @Table(name = "INSCRICOES")
@@ -13,7 +11,7 @@ public class Inscricao implements Serializable {
     public enum TipoEvento { CONGRESSO, SIMPOSIO };
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Integer id;
     private String status;
     @Temporal(TemporalType.DATE)
@@ -22,9 +20,6 @@ public class Inscricao implements Serializable {
     @Enumerated(EnumType.STRING)
     private TipoEvento tipoEvento;
     private String tipoParticipacao;
-
-    @ManyToOne
-    private Participante participante; // Relacionamento N para 1.
 
     public Inscricao() {
 
@@ -78,33 +73,4 @@ public class Inscricao implements Serializable {
         this.tipoParticipacao = tipoParticipacao;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Inscricao inscricao = (Inscricao) o;
-        return Objects.equals(id, inscricao.id) &&
-                Objects.equals(status, inscricao.status) &&
-                Objects.equals(dataInscricao, inscricao.dataInscricao) &&
-                Objects.equals(preco, inscricao.preco) &&
-                Objects.equals(tipoEvento, inscricao.tipoEvento) &&
-                Objects.equals(tipoParticipacao, inscricao.tipoParticipacao);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, status, dataInscricao, preco, tipoEvento, tipoParticipacao);
-    }
-
-    @Override
-    public String toString() {
-        return "Inscricao{" +
-                "id=" + id +
-                ", status='" + status + '\'' +
-                ", dataInscricao=" + dataInscricao +
-                ", preco=" + preco +
-                ", tipoEvento='" + tipoEvento + '\'' +
-                ", tipoParticipacao='" + tipoParticipacao + '\'' +
-                '}';
-    }
 }
